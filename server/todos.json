@@ -38,13 +38,5 @@
         "completed": false,
         "createdAt": "2024-02-02T07:27:01.167Z",
         "updatedAt": null
-    },
-    "5eb0eb58-514f-49c1-ba1c-63831bcf2b18": {
-        "title": "ok",
-        "description": "ok",
-        "id": "5eb0eb58-514f-49c1-ba1c-63831bcf2b18",
-        "completed": false,
-        "createdAt": "2024-02-02T07:29:36.610Z",
-        "updatedAt": null
     }
 }
