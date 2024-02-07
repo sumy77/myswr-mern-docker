@@ -1,31 +1,18 @@
-version: '3'
+version: "3"
 services:
-  front:
-    build:
-      context: './client'
-      dockerfile: Dockerfile
+  react-app:
+    image: myswr_image
+    stdin_open: true
     ports:
-      - 8080:8080
-    container_name: react-container
-    environment:
-      - WATCHPACK_POLLING=true
+      - "8080:8080"
     networks:
-      - mern-stack-network
-    volumes:
-      - ./client:/app
-      - /app/node_modules
-    depends_on:
-      - backend
-  backend:
-    build:
-      context: './server'
-      dockerfile: Dockerfile
+      - mern-app
+  api-server:
+    image: myswr_express_image
     ports:
-      - 8888:8888
-    container_name: express-container
+      - "8888:8888"
     networks:
-      - mern-stack-network
-    volumes:
-      - ./server:/app
+      - mern-app
 networks:
-  mern-stack-network:
+  mern-app:
+    driver: bridge
