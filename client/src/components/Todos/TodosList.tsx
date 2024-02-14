@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from "swr";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -13,10 +13,8 @@ import {
 } from '../../api/todos-api';
 import { addTodoOptions, deleteTodoOptions, updateTodoOptions } from '../../api/todosSWROptions';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../context/theme/theme';
 
 function TodosList() {
-  console.log('in to do: ', useContext(ThemeContext))
   const {data: todos, error, isLoading, mutate} = useSWR<Todo[]>("get-todos", getTodos);
   const [newTodo, setNewTodo] = useState('')
 

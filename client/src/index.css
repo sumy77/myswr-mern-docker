@@ -104,3 +104,7 @@ input[type="text"] {
   background-color: limegreen;
   color: #F8FAFC;
 }
+
+.themeSwitch {
+  line-height: 35px;
+}

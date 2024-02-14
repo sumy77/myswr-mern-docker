@@ -6,26 +6,25 @@ import PokemonList from './components/Pokemons/PokemonList';
 import { Container } from 'react-bootstrap';
 import TodosList from './components/Todos/TodosList';
 import NoteList from './components/Notes/NoteList';
-import { useContext, useState } from 'react';
-import { ThemeContext } from './components/context/theme/theme';
+import { useState } from 'react';
+import { useTheme } from './components/context/theme/theme';
 import Switch from "react-switch";
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 function App() {
-  const [theme, setTheme] = useState(useContext(ThemeContext));
+  const ctx = useTheme();
   const [checked, setChecked] = useState(false);
   function handleChange(check: boolean) {
     setChecked(!checked);
     if(check) {
-      setTheme('dark');
+      ctx?.setTheme('dark');
     }else{
-      setTheme('light');
+      ctx?.setTheme('light');
     }
   }
   return (
-    <ThemeContext.Provider value={theme}>
-    <div className={`App ${theme}`}>
-      <Switch onChange={handleChange} checked={checked} uncheckedIcon={<FaMoon/>} checkedIcon={<FaSun />} />
+    <div className={`App ${ctx?.theme}`}>
+      <Switch onChange={handleChange} checked={checked} className='themeSwitch' height={35} width={70} uncheckedIcon={<FaMoon/>} checkedIcon={<FaSun />} />
       <Container>
         <Routes>
           <Route index element={<PokemonList />} />
@@ -36,7 +35,6 @@ function App() {
         </Routes>
     </Container>
     </div>
-    </ThemeContext.Provider>
   )
 }
 
